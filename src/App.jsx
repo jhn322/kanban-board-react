@@ -1,12 +1,16 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from "react";
+import Board from "./components/Board";
+import Card from "./components/Card";
+import Column from "./components/Column";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <></>;
+  return (
+    <div className="App">
+      <h1>KANBAN BOARD</h1>
+      <Board />
+    </div>
+  );
 }
 
 export default App;
