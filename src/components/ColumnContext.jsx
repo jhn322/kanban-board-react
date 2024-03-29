@@ -4,18 +4,9 @@ const ColumnContext = createContext();
 
 export const ColumnProvider = ({ children }) => {
   const [columns, setColumns] = useState([
-    {
-      title: "To Do",
-      cards: [{ text: "Task 1" }, { text: "Task 2" }, { text: "Task 3" }],
-    },
-    {
-      title: "Doing",
-      cards: [{ text: "Task 4" }, { text: "Task 5" }],
-    },
-    {
-      title: "Done",
-      cards: [{ text: "Task 6" }],
-    },
+    { title: "To Do", cards: [] },
+    { title: "Doing", cards: [] },
+    { title: "Done", cards: [] },
   ]);
 
   return (
