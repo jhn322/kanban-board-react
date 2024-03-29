@@ -21,6 +21,13 @@ a {
   color: black;
 }
 
+li:hover {
+  background: linear-gradient(to right, #783db2, #f2379a, #fd8173);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Flex for nav */
 .nav-container {
   display: flex;
@@ -70,13 +77,6 @@ a {
   padding: 0 20px;
   text-align: center;
   cursor: pointer;
-}
-
-li:hover {
-  background: linear-gradient(to right, #783db2, #f2379a, #fd8173);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .App {

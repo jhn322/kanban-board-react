@@ -1,7 +1,8 @@
+// Column.js
 import React from "react";
 import Card from "./Card";
 
-const Column = ({ title, cards = [] }) => {
+const Column = ({ title, cards = [], isToDo, onAddTask }) => {
   return (
     <div className="column">
       <div className="column-title">
@@ -12,6 +13,11 @@ const Column = ({ title, cards = [] }) => {
           <Card key={index} text={card.text} />
         ))}
       </div>
+      {isToDo && (
+        <div className="add-task-button">
+          <button onClick={onAddTask}>Add New Task</button>
+        </div>
+      )}
     </div>
   );
 };
