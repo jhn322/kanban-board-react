@@ -128,6 +128,31 @@ li:hover {
   backdrop-filter: blur(10px);
 }
 
+/* Modal */
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
 /* Mobile */
 @media only screen and (max-width: 800px) {
   .nav-container {

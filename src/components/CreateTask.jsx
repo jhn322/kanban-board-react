@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CreateTask = ({ onClose, onAdd }) => {
   const [title, setTitle] = useState("");
@@ -23,12 +23,12 @@ const CreateTask = ({ onClose, onAdd }) => {
         <input
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
           placeholder="Title"
         />
         <textarea
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(event) => setText(event.target.value)}
           placeholder="Task description"
         />
         <button onClick={handleCreateTask}>Add</button>
