@@ -1,5 +1,5 @@
-// import { NavLink } from "react-router-dom";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -13,10 +13,18 @@ const Nav = () => {
         <div className="nav-container">
           {" "}
           <ul className="nav-links">
-            <li>Home</li>
-            <li>To Do</li>
-            <li>Doing</li>
-            <li>Done</li>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/todo">To Do</NavLink>
+            </li>
+            <li>
+              <NavLink to="/doing">Doing</NavLink>
+            </li>
+            <li>
+              <NavLink to="/done">Done</NavLink>
+            </li>
           </ul>
         </div>
       </div>
