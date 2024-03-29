@@ -19,19 +19,31 @@ const CreateTask = ({ onClose, onAdd }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        <h2>Add New Task</h2>
-        <input
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          placeholder="Title"
-        />
-        <textarea
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-          placeholder="Task description"
-        />
-        <button onClick={handleCreateTask}>Add</button>
+        <div className="modal-title">
+          <h2>To Do</h2>
+        </div>
+        <div className="modal-input">
+          <div class="input-wrapper">
+            <input
+              className="task-title"
+              type="text"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              placeholder="Task title"
+            />
+            <textarea
+              className="task-text"
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+              placeholder="Task text"
+            />
+          </div>
+        </div>
+        <div>
+          <button className="modal-button" onClick={handleCreateTask}>
+            Add
+          </button>
+        </div>
       </div>
     </div>
   );

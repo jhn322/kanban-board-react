@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import { BsPlusSquareFill } from "react-icons/bs";
 
 const Column = ({ title, cards = [], isToDo, onAddTask }) => {
   return (
@@ -13,8 +14,10 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
         ))}
       </div>
       {isToDo && (
-        <div className="add-task-button">
-          <button onClick={onAddTask}>Add New Task</button>
+        <div className="new-task-button">
+          <button onClick={onAddTask}>
+            New task <BsPlusSquareFill />
+          </button>
         </div>
       )}
     </div>

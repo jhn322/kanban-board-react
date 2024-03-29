@@ -131,26 +131,120 @@ li:hover {
 /* Modal */
 .modal {
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  border-radius: 20px;
+  width: 600px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.modal-title > h2 {
+  width: 8rem;
+  height: 2rem;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.modal-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-title {
+  height: 50px;
+  width: 500px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.task-text {
+  height: 200px;
+  width: 500px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  resize: none;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.task-title::placeholder,
+.task-text::placeholder {
+  font-size: 16px;
+}
+
+.task-title:focus,
+.task-text:focus {
+  outline: 2px solid #783db2;
+  box-shadow: 0 0 0 3px #f2379a, 0 0 0 5px #fd8173;
 }
 
 .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-10%) translateX(-50%);
+  font-size: 40px;
   float: right;
   cursor: pointer;
+}
+
+.close:hover {
+  background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.modal-button,
+.new-task-button > button {
+  width: 120px;
+  border-radius: 10px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.modal-button:hover,
+.new-task-button > button:hover {
+  background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
 }
 
 /* Mobile */
