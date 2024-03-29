@@ -228,8 +228,7 @@ li:hover {
   color: transparent;
 }
 
-.modal-button,
-.new-task-button > button {
+.modal-button {
   width: 120px;
   border-radius: 10px;
   height: 40px;
@@ -242,8 +241,15 @@ li:hover {
   backdrop-filter: blur(10px);
 }
 
-.modal-button:hover,
-.new-task-button > button:hover {
+.new-task-button svg {
+  font-size: 35px;
+  cursor: pointer;
+  vertical-align: middle;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.modal-button:hover {
   background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
 }
 
