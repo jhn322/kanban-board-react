@@ -23,7 +23,7 @@ const CreateTask = ({ onClose, onAdd }) => {
           <h2>To Do</h2>
         </div>
         <div className="modal-input">
-          <div class="input-wrapper">
+          <div className="input-wrapper">
             <input
               className="task-title"
               type="text"

@@ -93,6 +93,7 @@ li:hover {
 /* Columns styling */
 .column {
   height: 70rem;
+  max-width: 26rem;
   min-width: 26rem;
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
@@ -124,6 +125,27 @@ li:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
+}
+
+/* Prevents text in cards from expanding outside it & wrapping to new row */
+.card-title,
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trash-icon {
+  font-size: 25px;
+  position: absolute;
+  right: 10px;
+  top: 42px;
+  cursor: pointer;
+  display: none;
+}
+
+.card:hover .trash-icon {
+  display: block;
 }
 
 /* Modal */
@@ -270,7 +292,7 @@ li:hover {
     margin-top: 0.5rem;
   }
 
-  /* New gradiant */
+  /* New gradient */
   .gradient {
     background: linear-gradient(to right, #f2379a, #783db2, #45c7a5);
     background-clip: text;
@@ -307,6 +329,7 @@ li:hover {
   /* Less height & width */
   .column {
     height: 40rem;
+    max-width: 22rem;
     min-width: 22rem;
     padding: 1em;
     margin-top: 0;
@@ -324,6 +347,7 @@ li:hover {
 
   /* Less width */
   .column {
+    max-width: 16rem;
     min-width: 16rem;
     height: 60rem;
   }

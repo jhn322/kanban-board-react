@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Column from "./Column";
-import CreateTask from "./CreateTask";
 import { useColumns } from "../components/ColumnContext";
 import { useLocation } from "react-router-dom";
+import Column from "./Column";
+import CreateTask from "./CreateTask";
 
 const Board = () => {
   const { columns, setColumns } = useColumns();
@@ -18,6 +18,10 @@ const Board = () => {
       newColumns[todoColumnIndex].cards.push({ title, text });
       setColumns(newColumns);
     }
+  };
+
+  const handleAddTask = () => {
+    setIsModalOpen(true);
   };
 
   // Extract the page from the URL
@@ -41,7 +45,7 @@ const Board = () => {
           title={column.title}
           cards={column.cards}
           isToDo={column.title.toLowerCase() === "to do"}
-          onAddTask={() => setIsModalOpen(true)}
+          onAddTask={handleAddTask}
         />
       ))}
       {isModalOpen && (
