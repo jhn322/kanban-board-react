@@ -101,6 +101,12 @@ li:hover {
   padding: 1em;
   margin: 0 0.5rem;
   border-radius: 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.column::-webkit-scrollbar {
+  display: none;
 }
 
 .column-title {
