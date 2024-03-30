@@ -21,6 +21,34 @@ a {
   color: black;
 }
 
+/* Primary background styles */
+.nav,
+.column,
+.modal-content,
+.modal-title > h2 {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+}
+
+/* Secondary background styles */
+.card,
+.task-title,
+.task-text,
+.modal-button {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+.headline {
+  letter-spacing: 1.5rem;
+}
+
+/* Gradient for headline and nav links */
+.gradient,
 li:hover {
   background: linear-gradient(to right, #783db2, #f2379a, #fd8173);
   background-clip: text;
@@ -29,10 +57,11 @@ li:hover {
 }
 
 /* Flex for nav */
-.nav-container {
+.nav-container,
+.nav-links {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   margin-top: 1rem;
 }
 
@@ -40,45 +69,24 @@ li:hover {
 .nav {
   min-height: 7vh;
   min-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
   padding: 0 2rem;
 }
 
-.headline {
-  letter-spacing: 1.5rem;
-}
-
-/* Headline gradiant */
-.gradient {
-  background: linear-gradient(to right, #783db2, #f2379a, #fd8173);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Flex for links in nav */
+/* Padding nav links */
 .nav-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  margin: 0;
-  padding: 0;
+  margin: 0 0 0.5rem 0;
   font-size: 20px;
   font-weight: 500;
 }
 
 .nav-links li {
-  margin: 0;
   list-style: none;
   padding: 0 20px;
   text-align: center;
   cursor: pointer;
 }
 
+/* Center all items in app */
 .App {
   text-align: center;
 }
@@ -90,17 +98,13 @@ li:hover {
   margin: 1rem;
 }
 
-/* Columns styling */
+/* Styling for columns in board */
 .column {
   height: 70rem;
   max-width: 26rem;
   min-width: 26rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
   padding: 1em;
   margin: 0 0.5rem;
-  border-radius: 20px;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -119,7 +123,6 @@ li:hover {
 .column-title > h2 {
   width: 8rem;
   height: 2rem;
-  border-radius: 20px;
   backdrop-filter: blur(10px);
 }
 
@@ -128,9 +131,6 @@ li:hover {
   padding: 2em;
   margin: 10px 0 10px 0;
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
 }
 
 /* Prevents text in cards from expanding outside it & wrapping to new row */
@@ -173,22 +173,14 @@ li:hover {
   align-items: center;
   justify-content: center;
   padding: 100px;
-  border-radius: 20px;
   width: 600px;
   height: 400px;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
 }
 
 .modal-title > h2 {
   width: 8rem;
   height: 2rem;
   margin-bottom: 10px;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
 }
 
 .modal-input {
@@ -201,28 +193,20 @@ li:hover {
 .task-title {
   height: 50px;
   width: 500px;
-  border-radius: 10px;
   border: none;
   font-size: 16px;
   padding: 10px;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
 }
 
 .task-text {
   height: 200px;
   width: 500px;
   margin: 10px 0;
-  border-radius: 10px;
   border: none;
   font-size: 16px;
   resize: none;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
 }
 
 .task-title::placeholder,
@@ -256,15 +240,11 @@ li:hover {
 
 .modal-button {
   width: 120px;
-  border-radius: 10px;
   height: 40px;
   border: none;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
 }
 
 .new-task-icon {
