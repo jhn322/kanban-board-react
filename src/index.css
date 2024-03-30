@@ -339,6 +339,32 @@ li:hover {
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
+
+  .modal-content {
+    width: 350px;
+    height: 300px;
+  }
+
+  .modal-title > h2 {
+    display: none;
+  }
+
+  .task-title {
+    height: 50px;
+    width: 270px;
+  }
+
+  .task-text {
+    height: 170px;
+    width: 270px;
+    margin-bottom: 0.3rem;
+  }
+
+  .modal-button {
+    width: 100px;
+    height: 35px;
+    margin-bottom: -0.1rem;
+  }
 }
 
 /* iPad Air tablet size */
