@@ -261,7 +261,7 @@ li:hover {
   backdrop-filter: blur(10px);
 }
 
-.new-task-button svg {
+.new-task-icon svg {
   font-size: 35px;
   margin-top: 10px;
   cursor: pointer;

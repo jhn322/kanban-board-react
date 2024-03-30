@@ -53,7 +53,7 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
       </div>
       {isToDo && (
         <div
-          className="new-task-button"
+          className="new-task-icon"
           onClick={onAddTask}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

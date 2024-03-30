@@ -28,7 +28,7 @@ const Card = ({ id, index, title, text, onDelete }) => {
         className="trash-icon"
         onClick={handleDelete}
         style={{
-          fill: isHovered ? "url(#gradient)" : "#000000", // Change "#000000" to your default trash icon color
+          fill: isHovered ? "url(#gradient)" : "#000000",
           cursor: "pointer",
           transition: "fill 0.3s ease",
         }}
