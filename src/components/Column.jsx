@@ -20,7 +20,7 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
       </div>
       <div className="card-list">
         {cards.map((card, index) => (
-          <Card key={index} text={card.text} />
+          <Card key={index} title={card.title} text={card.text} />
         ))}
       </div>
       {isToDo && (
