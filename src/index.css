@@ -105,6 +105,7 @@ li:hover {
   scrollbar-width: none;
 }
 
+/* Hides ugly scroll bar for safari/chrome */
 .column::-webkit-scrollbar {
   display: none;
 }
@@ -116,7 +117,6 @@ li:hover {
 }
 
 .column-title > h2 {
-  cursor: pointer;
   width: 8rem;
   height: 2rem;
   border-radius: 20px;
