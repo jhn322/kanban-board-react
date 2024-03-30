@@ -261,11 +261,15 @@ li:hover {
   backdrop-filter: blur(10px);
 }
 
+.new-task-icon {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+}
+
 .new-task-icon svg {
   font-size: 35px;
-  margin-top: 10px;
   cursor: pointer;
-  vertical-align: middle;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
