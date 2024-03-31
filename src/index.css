@@ -18,14 +18,16 @@ body {
 
 a {
   text-decoration: none;
-  color: black;
+  color: #0b0b0b;
 }
 
 /* Primary background styles */
 .nav,
 .column,
 .modal-content,
-.modal-title > h2 {
+.column-title > h2,
+.modal-title > h2,
+.card {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
@@ -41,6 +43,24 @@ a {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 10px;
+}
+
+/* Pointer for all clickable areas */
+.nav-links li,
+.trash-icon,
+.close-icon,
+.modal-button,
+.new-task-icon svg {
+  cursor: pointer;
+}
+
+/* All font size for text in task modal */
+.task-title,
+.task-text,
+.task-title::placeholder,
+.task-text::placeholder,
+.modal-button {
+  font-size: 18px;
 }
 
 .headline {
@@ -83,7 +103,6 @@ li:hover {
   list-style: none;
   padding: 0 20px;
   text-align: center;
-  cursor: pointer;
 }
 
 /* Center all items in app */
@@ -123,14 +142,12 @@ li:hover {
 .column-title > h2 {
   width: 8rem;
   height: 2rem;
-  backdrop-filter: blur(10px);
 }
 
 /* Styling for cards in columns */
 .card {
   padding: 2em;
   margin: 10px 0 10px 0;
-  border-radius: 20px;
 }
 
 /* Prevents text in cards from expanding outside it & wrapping to new row */
@@ -141,12 +158,12 @@ li:hover {
   white-space: nowrap;
 }
 
+/* Delete tasks */
 .trash-icon {
   font-size: 25px;
   position: absolute;
   right: 10px;
   top: 42px;
-  cursor: pointer;
   display: none;
 }
 
@@ -154,7 +171,7 @@ li:hover {
   display: block;
 }
 
-/* Modal */
+/* Task modal */
 .modal {
   display: flex;
   justify-content: center;
@@ -167,6 +184,7 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+/* Task modal flex & dimensions */
 .modal-content {
   display: flex;
   flex-direction: column;
@@ -183,54 +201,44 @@ li:hover {
   margin-bottom: 10px;
 }
 
-.modal-input {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Task headline input field */
 .task-title {
   height: 50px;
   width: 500px;
   border: none;
-  font-size: 16px;
   padding: 10px;
   font-weight: 700;
 }
 
+/* Task text input field */
 .task-text {
   height: 200px;
   width: 500px;
   margin: 10px 0;
   border: none;
-  font-size: 16px;
   resize: none;
   padding: 10px;
 }
 
-.task-title::placeholder,
-.task-text::placeholder {
-  font-size: 16px;
-}
-
+/* Border for inputs */
 .task-title:focus,
 .task-text:focus {
   outline: 2px solid #783db2;
   box-shadow: 0 0 0 3px #f2379a, 0 0 0 5px #fd8173;
 }
 
-.close {
+/* Close task modal */
+.close-icon {
   position: absolute;
   top: 0;
   right: 0;
   transform: translateY(-10%) translateX(-50%);
   font-size: 40px;
   float: right;
-  cursor: pointer;
 }
 
-.close:hover {
+/* Gradiant hover */
+.close-icon:hover {
   background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
   background-clip: text;
   -webkit-background-clip: text;
@@ -238,15 +246,15 @@ li:hover {
   color: transparent;
 }
 
+/* Add button */
 .modal-button {
   width: 120px;
   height: 40px;
   border: none;
-  cursor: pointer;
-  font-size: 16px;
   font-weight: 500;
 }
 
+/* Open task modal plus icon */
 .new-task-icon {
   position: relative;
   display: inline-block;
@@ -255,13 +263,13 @@ li:hover {
 
 .new-task-icon svg {
   font-size: 35px;
-  cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 
 .modal-button:hover {
   background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
+  color: #fff;
 }
 
 /* Mobile */
@@ -283,13 +291,7 @@ li:hover {
   }
 
   /* New gradient */
-  .gradient {
-    background: linear-gradient(to right, #f2379a, #783db2, #45c7a5);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
+  .gradient,
   li:hover {
     background: linear-gradient(to right, #f2379a, #783db2, #45c7a5);
     background-clip: text;

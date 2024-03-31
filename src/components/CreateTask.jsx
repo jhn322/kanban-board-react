@@ -16,7 +16,7 @@ const CreateTask = ({ onClose, onAdd }) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={onClose}>
+        <span className="close-icon" onClick={onClose}>
           &times;
         </span>
         <div className="modal-title">
