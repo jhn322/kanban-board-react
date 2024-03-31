@@ -47,6 +47,7 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
             index={index}
             title={card.title}
             text={card.text}
+            creationDate={card.creationDate}
             onDelete={handleDeleteCard}
           />
         ))}

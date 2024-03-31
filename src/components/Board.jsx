@@ -15,7 +15,16 @@ const Board = () => {
       (column) => column.title.toLowerCase() === "to do"
     );
     if (todoColumnIndex !== -1) {
-      newColumns[todoColumnIndex].cards.push({ title, text });
+      const currentDate = new Date();
+      const formattedDate = `${currentDate.getFullYear()}/${
+        currentDate.getMonth() + 1
+      }/${currentDate.getDate()}`;
+
+      newColumns[todoColumnIndex].cards.push({
+        title,
+        text,
+        creationDate: formattedDate,
+      });
       setColumns(newColumns);
     }
   };

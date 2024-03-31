@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const Card = ({ id, index, title, text, onDelete }) => {
+const Card = ({ id, index, title, text, creationDate, onDelete }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleDelete = () => {
@@ -24,6 +24,9 @@ const Card = ({ id, index, title, text, onDelete }) => {
     >
       <h3 className="card-title">{title}</h3>
       <p className="card-text">{text}</p>
+      <div className="card-date-container">
+        <p className="card-date">{creationDate}</p>
+      </div>
       <FaTrash
         className="trash-icon"
         onClick={handleDelete}
