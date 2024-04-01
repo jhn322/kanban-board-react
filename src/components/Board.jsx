@@ -8,10 +8,8 @@ const Board = () => {
   const { columns, setColumns } = useColumns();
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Added a loading state because Column component rendered before localStorage loaded
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect to retrieve columns data from localStorage
   useEffect(() => {
     const savedColumns = JSON.parse(localStorage.getItem("columns"));
     if (savedColumns) {
@@ -38,19 +36,32 @@ const Board = () => {
       });
       setColumns(newColumns);
 
-      // Update localStorage with the new columns data
       localStorage.setItem("columns", JSON.stringify(newColumns));
     }
+  };
+
+  const handleDeleteCard = (id, index, columnTitle) => {
+    const updatedColumns = columns.map((column) => {
+      if (column.title.toLowerCase() === columnTitle.toLowerCase()) {
+        const updatedCards = [...column.cards];
+        updatedCards.splice(index, 1);
+        return {
+          ...column,
+          cards: updatedCards,
+        };
+      }
+      return column;
+    });
+
+    setColumns(updatedColumns);
+    localStorage.setItem("columns", JSON.stringify(updatedColumns));
   };
 
   const handleAddTask = () => {
     setIsModalOpen(true);
   };
 
-  // Extract the page from the URL
   const page = location.pathname.substring(1);
-
-  // Filter columns based on the route
   const filteredColumns =
     page === ""
       ? columns
@@ -62,7 +73,7 @@ const Board = () => {
 
   return (
     <div className="board">
-      {isLoading ? ( // Show loading indicator while data is being retrieved
+      {isLoading ? (
         <div>Loading...</div>
       ) : (
         filteredColumns.map((column, index) => (
@@ -72,6 +83,7 @@ const Board = () => {
             cards={column.cards}
             isToDo={column.title.toLowerCase() === "to do"}
             onAddTask={handleAddTask}
+            onDeleteCard={handleDeleteCard}
           />
         ))
       )}

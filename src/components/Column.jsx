@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
-import { useColumns } from "../components/ColumnContext";
 import Card from "./Card";
 
-const Column = ({ title, cards = [], isToDo, onAddTask }) => {
-  const { columns, setColumns } = useColumns();
+const Column = ({ title, cards = [], isToDo, onAddTask, onDeleteCard }) => {
   const [columnCards, setColumnCards] = useState(cards);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -12,18 +10,7 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
     const updatedCards = [...columnCards];
     updatedCards.splice(index, 1);
     setColumnCards(updatedCards);
-
-    const updatedColumns = columns.map((column) => {
-      if (column.title.toLowerCase() === title.toLowerCase()) {
-        return {
-          ...column,
-          cards: updatedCards,
-        };
-      }
-      return column;
-    });
-
-    setColumns(updatedColumns);
+    onDeleteCard(id, index, title);
   };
 
   const handleMouseEnter = () => {
@@ -40,7 +27,6 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
         <h2>{title}</h2>
       </div>
       <div className="card-list">
-        {/* Unique ID for each card */}
         {columnCards.map((card, index) => (
           <Card
             key={`${card.id}-${index}`}
@@ -50,6 +36,7 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
             text={card.text}
             creationDate={card.creationDate}
             onDelete={handleDeleteCard}
+            columnTitle={title}
           />
         ))}
       </div>

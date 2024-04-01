@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const Card = ({ id, index, title, text, creationDate, onDelete }) => {
+const Card = ({
+  id,
+  index,
+  title,
+  text,
+  creationDate,
+  onDelete,
+  columnTitle,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleDelete = () => {
-    onDelete(id, index);
+    onDelete(id, index, columnTitle);
   };
 
   const handleMouseEnter = () => {
