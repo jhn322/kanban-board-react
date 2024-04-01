@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 
 const Card = ({ id, index, title, text, creationDate, onDelete }) => {
   const [isHovered, setIsHovered] = useState(false);
-  cosnt[(isLongPressing, setIsLongpressing)] = useState(false);
+  const [isLongPressing, setIsLongpressing] = useState(false);
   const timerRef = useRef(null);
 
   const handleDelete = () => {
