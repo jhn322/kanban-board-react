@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CreateTask = ({ onClose, onAdd }) => {
+const TaskModal = ({ onClose, onAdd }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
@@ -14,25 +14,25 @@ const CreateTask = ({ onClose, onAdd }) => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close-icon" onClick={onClose}>
+    <div className="add-modal">
+      <div className="add-modal-content">
+        <span className="add-close-icon" onClick={onClose}>
           &times;
         </span>
-        <div className="modal-title">
+        <div className="add-modal-title">
           <h2>To Do</h2>
         </div>
-        <div className="modal-input">
-          <div className="input-wrapper">
+        <div className="add-modal-input">
+          <div className="add-input-wrapper">
             <input
-              className="task-title"
+              className="add-task-title"
               type="text"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               placeholder="Task title"
             />
             <textarea
-              className="task-text"
+              className="add-task-text"
               value={text}
               onChange={(event) => setText(event.target.value)}
               placeholder="Task text"
@@ -40,7 +40,7 @@ const CreateTask = ({ onClose, onAdd }) => {
           </div>
         </div>
         <div>
-          <button className="modal-button" onClick={handleCreateTask}>
+          <button className="add-modal-button" onClick={handleCreateTask}>
             Add
           </button>
         </div>
@@ -49,4 +49,4 @@ const CreateTask = ({ onClose, onAdd }) => {
   );
 };
 
-export default CreateTask;
+export default TaskModal;

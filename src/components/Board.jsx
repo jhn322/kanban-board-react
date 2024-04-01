@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useColumns } from "../components/ColumnContext";
 import { useLocation } from "react-router-dom";
 import Column from "./Column";
-import CreateTask from "./CreateTask";
+import TaskModal from "./TaskModal";
 
 const Board = () => {
   const { columns, setColumns } = useColumns();
@@ -76,7 +76,7 @@ const Board = () => {
         ))
       )}
       {isModalOpen && (
-        <CreateTask
+        <TaskModal
           onClose={() => setIsModalOpen(false)}
           onAdd={handleCreateTask}
         />
