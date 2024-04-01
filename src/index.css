@@ -67,6 +67,7 @@ a {
 .add-task-text,
 .add-task-title::placeholder,
 .add-task-text::placeholder,
+.card-modal-button,
 .add-modal-button {
   font-size: 18px;
 }
@@ -365,10 +366,12 @@ li:hover {
     display: block;
   }
 
+  .card-modal-title > h2,
   .add-modal-title > h2 {
     display: none;
   }
 
+  .card-task-title,
   .add-task-title {
     height: 50px;
     width: 270px;
@@ -381,7 +384,8 @@ li:hover {
     margin-bottom: 0.3rem;
   }
 
-  .modal-button {
+  .card-modal-button,
+  .add-modal-button {
     width: 100px;
     height: 35px;
     margin-bottom: -0.1rem;
@@ -412,6 +416,8 @@ li:hover {
 @media only screen and (min-width: 901px) and (max-width: 1250px) {
   .column {
     min-width: 18rem;
+    max-width: 18rem;
+    height: 60rem;
   }
 
   .trash-icon {
