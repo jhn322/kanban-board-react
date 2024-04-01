@@ -26,7 +26,7 @@ const TaskModal = ({ onClose, onAdd }) => {
           &times;
         </span>
         <div className="add-modal-title">
-          <h2>To Do</h2>
+          <h2>New Task</h2>
         </div>
         <div className="add-modal-input">
           <div>

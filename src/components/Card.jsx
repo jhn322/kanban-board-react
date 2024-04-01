@@ -12,8 +12,6 @@ const Card = ({
   onEdit,
   onCardClick,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   const handleDelete = (event) => {
     event.stopPropagation();
     onDelete(id, index, columnTitle);
@@ -23,14 +21,6 @@ const Card = ({
     onEdit(id, title, text);
   };
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
   const handleCardClick = () => {
     onCardClick(id, title, text);
   };
@@ -38,8 +28,6 @@ const Card = ({
   return (
     <div
       className="card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onClick={handleCardClick}
       style={{ cursor: "pointer" }}
     >
@@ -53,7 +41,7 @@ const Card = ({
           className="trash-icon"
           onClick={handleDelete}
           style={{
-            fill: isHovered ? "url(#gradient)" : "#000000",
+            fill: "url(#gradient)",
             cursor: "pointer",
             transition: "fill 0.3s ease",
           }}

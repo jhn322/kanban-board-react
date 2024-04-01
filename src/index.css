@@ -369,6 +369,11 @@ li:hover {
     height: 300px;
   }
 
+  /* Delete cards visible in mobile */
+  .trash-icon {
+    display: block;
+  }
+
   .add-modal-title > h2 {
     display: none;
   }
@@ -406,11 +411,19 @@ li:hover {
     min-width: 16rem;
     height: 60rem;
   }
+
+  .trash-icon {
+    display: block;
+  }
 }
 
 /* iPad Pro tablet size */
 @media only screen and (min-width: 901px) and (max-width: 1250px) {
   .column {
     min-width: 18rem;
+  }
+
+  .trash-icon {
+    display: block;
   }
 }
