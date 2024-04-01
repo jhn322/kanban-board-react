@@ -131,6 +131,14 @@ const Board = () => {
             setColumns(updatedColumns);
             localStorage.setItem("columns", JSON.stringify(updatedColumns));
           }}
+          onDelete={(id) => {
+            const updatedColumns = columns.map((column) => ({
+              ...column,
+              cards: column.cards.filter((card) => card.id !== id),
+            }));
+            setColumns(updatedColumns);
+            localStorage.setItem("columns", JSON.stringify(updatedColumns));
+          }}
         />
       )}
       {isModalOpen && !editCardInfo && (

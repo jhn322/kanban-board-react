@@ -24,7 +24,6 @@ a {
 /* Primary background styles */
 .nav,
 .column,
-.card-modal-content,
 .add-modal-content,
 .column-title > h2,
 .add-modal-title > h2,
@@ -37,9 +36,6 @@ a {
 
 /* Secondary background styles */
 .card,
-.card-task-title,
-.card-task-text,
-.card-modal-button,
 .add-task-title,
 .add-task-text,
 .add-modal-button {
@@ -52,9 +48,10 @@ a {
 /* Pointer for all clickable areas */
 .nav-links li,
 .trash-icon,
+.card-modal-delete-button,
+.card-modal-update-button,
 .card-close-icon,
 .add-close-icon,
-.card-modal-button,
 .add-modal-button,
 .new-task-icon svg {
   cursor: pointer;
@@ -65,13 +62,15 @@ a {
 .card-task-text,
 .add-task-title,
 .add-task-text,
+.card-modal-delete-button,
+.card-modal-update-button,
 .add-task-title::placeholder,
 .add-task-text::placeholder,
-.card-modal-button,
 .add-modal-button {
   font-size: 18px;
 }
 
+/* -----------------Navbar----------------- */
 .headline {
   letter-spacing: 1.5rem;
 }
@@ -137,7 +136,10 @@ li:hover {
   scrollbar-width: none;
 }
 
+/* -----------------Cards----------------- */
 /* Hides ugly scroll bar for safari/chrome */
+.card-task-text::-webkit-scrollbar,
+.add-task-text::-webkit-scrollbar,
 .column::-webkit-scrollbar {
   display: none;
 }
@@ -187,8 +189,7 @@ li:hover {
   display: block;
 }
 
-/* -----------------Card task modal----------------- */
-.card-modal,
+/* -----------------Add new task modal----------------- */
 .add-modal {
   display: flex;
   justify-content: center;
@@ -201,7 +202,6 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.card-modal-content,
 .add-modal-content {
   display: flex;
   flex-direction: column;
@@ -213,7 +213,6 @@ li:hover {
 }
 
 /* Close add & task icon in modals, styling */
-.card-close-icon,
 .add-close-icon {
   position: absolute;
   top: 0;
@@ -224,7 +223,6 @@ li:hover {
 }
 
 /* Gradiant hover */
-.card-close-icon:hover,
 .add-close-icon:hover {
   background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
   background-clip: text;
@@ -233,7 +231,6 @@ li:hover {
   color: transparent;
 }
 
-.card-modal-title,
 .add-modal-title > h2 {
   width: 8rem;
   height: 2rem;
@@ -241,22 +238,14 @@ li:hover {
 }
 
 /* Add button for both modals */
-.card-modal-button,
 .add-modal-button {
   width: 120px;
   height: 40px;
+  margin: 0 20px;
   border: none;
   font-weight: 500;
 }
 
-.card-modal-button:hover,
-.add-modal-button:hover {
-  background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
-  color: #fff;
-}
-
-/* Task headline input field */
-.card-task-title,
 .add-task-title {
   height: 50px;
   width: 500px;
@@ -265,24 +254,134 @@ li:hover {
   font-weight: 700;
 }
 
-/* Task text input field */
-.card-task-text,
 .add-task-text {
   height: 200px;
   width: 500px;
   margin: 10px 0;
   border: none;
   resize: none;
+  scrollbar-width: none;
   padding: 10px;
 }
 
 /* Border for inputs */
-.card-task-title:focus,
 .add-task-title:focus,
-.card-task-title:focus,
 .add-task-text:focus {
   outline: 2px solid #783db2;
   box-shadow: 0 0 0 3px #f2379a, 0 0 0 5px #fd8173;
+}
+
+.card-modal-update-button:hover,
+.add-modal-button:hover {
+  background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
+  color: #fff;
+}
+
+/* -----------------Edit Card modal----------------- */
+.card-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.card-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  width: 450px;
+  height: 700px;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+}
+
+/* Close add & task icon in modals, styling */
+.card-close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-10%) translateX(-50%);
+  font-size: 40px;
+  float: right;
+}
+
+/* Gradiant hover */
+.card-close-icon:hover {
+  background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.card-modal-title > h2 {
+  width: 8rem;
+  height: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Edit card headline input field */
+.card-task-title {
+  height: 50px;
+  width: 400px;
+  padding: 10px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Edit card text input field */
+.card-task-text {
+  height: 500px;
+  width: 400px;
+  margin: 10px 0;
+  resize: none;
+  padding: 10px;
+  scrollbar-width: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.card-modal-buttons {
+  display: flex;
+}
+
+/* Border for inputs */
+.card-task-title:focus,
+.card-task-text:focus {
+  outline: 1px solid black;
+}
+
+/* Add button edit card */
+.card-modal-update-button,
+.card-modal-delete-button {
+  width: 120px;
+  height: 40px;
+  margin: 0 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.card-modal-update-button:hover {
+  color: #fff;
+  border: none;
+  background-color: #37f285;
+}
+
+.card-modal-delete-button:hover {
+  color: #fff;
+  border: none;
+  background-color: #f23737;
 }
 /* -------------------------------------------- */
 
@@ -355,7 +454,6 @@ li:hover {
     margin-bottom: 0.5rem;
   }
 
-  .card-modal-content,
   .add-modal-content {
     width: 350px;
     height: 300px;
@@ -377,14 +475,30 @@ li:hover {
     width: 270px;
   }
 
-  .card-task-text,
   .add-task-text {
     height: 170px;
     width: 270px;
     margin-bottom: 0.3rem;
   }
 
-  .card-modal-button,
+  /* Edit card text input field */
+  .card-task-text {
+    height: 350px;
+    width: 270px;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-modal-content {
+    width: 350px;
+    height: 500px;
+  }
+
+  .card-modal-buttons {
+    display: flex;
+  }
+
+  .card-modal-update-button,
+  .card-modal-delete-button,
   .add-modal-button {
     width: 100px;
     height: 35px;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CardModal = ({ onClose, cardInfo, onUpdate }) => {
+const CardModal = ({ onClose, cardInfo, onUpdate, onDelete }) => {
   const [title, setTitle] = useState(cardInfo.title);
   const [text, setText] = useState(cardInfo.text);
 
@@ -20,6 +20,11 @@ const CardModal = ({ onClose, cardInfo, onUpdate }) => {
 
   const handleUpdate = () => {
     onUpdate(title, text);
+    onClose();
+  };
+
+  const handleDelete = () => {
+    onDelete(cardInfo.id);
     onClose();
   };
 
@@ -53,9 +58,12 @@ const CardModal = ({ onClose, cardInfo, onUpdate }) => {
             ></textarea>
           </div>
         </div>
-        <div>
-          <button className="card-modal-button" onClick={handleUpdate}>
+        <div className="card-modal-buttons">
+          <button className="card-modal-update-button" onClick={handleUpdate}>
             Update
+          </button>
+          <button className="card-modal-delete-button" onClick={handleDelete}>
+            Delete
           </button>
         </div>
       </div>
