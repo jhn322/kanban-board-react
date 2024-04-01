@@ -3,11 +3,13 @@ import { useColumns } from "../components/ColumnContext";
 import { useLocation } from "react-router-dom";
 import Column from "./Column";
 import TaskModal from "./TaskModal";
+import CardModal from "./CardModal";
 
 const Board = () => {
   const { columns, setColumns } = useColumns();
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editCardInfo, setEditCardInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,6 +19,11 @@ const Board = () => {
     }
     setIsLoading(false);
   }, []);
+
+  const handleEditCard = (id, title, text) => {
+    setIsModalOpen(true);
+    setEditCardInfo({ id, title, text });
+  };
 
   const handleCreateTask = ({ title, text }) => {
     const newColumns = [...columns];
@@ -61,6 +68,11 @@ const Board = () => {
     setIsModalOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditCardInfo(null);
+  };
+
   const page = location.pathname.substring(1);
   const filteredColumns =
     page === ""
@@ -84,14 +96,39 @@ const Board = () => {
             isToDo={column.title.toLowerCase() === "to do"}
             onAddTask={handleAddTask}
             onDeleteCard={handleDeleteCard}
+            onEditCard={handleEditCard}
           />
         ))
       )}
-      {isModalOpen && (
-        <TaskModal
-          onClose={() => setIsModalOpen(false)}
-          onAdd={handleCreateTask}
+
+      {isModalOpen && editCardInfo && (
+        <CardModal
+          onClose={handleCloseModal}
+          cardInfo={editCardInfo}
+          onUpdate={(updatedTitle, updatedText) => {
+            const updatedColumns = columns.map((column) => {
+              const updatedCards = column.cards.map((card) => {
+                if (card.id === editCardInfo.id) {
+                  return {
+                    ...card,
+                    title: updatedTitle,
+                    text: updatedText,
+                  };
+                }
+                return card;
+              });
+              return {
+                ...column,
+                cards: updatedCards,
+              };
+            });
+            setColumns(updatedColumns);
+            localStorage.setItem("columns", JSON.stringify(updatedColumns));
+          }}
         />
+      )}
+      {isModalOpen && !editCardInfo && (
+        <TaskModal onClose={handleCloseModal} onAdd={handleCreateTask} />
       )}
     </div>
   );

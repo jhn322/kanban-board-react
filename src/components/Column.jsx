@@ -2,7 +2,14 @@ import { useState } from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
 import Card from "./Card";
 
-const Column = ({ title, cards = [], isToDo, onAddTask, onDeleteCard }) => {
+const Column = ({
+  title,
+  cards = [],
+  isToDo,
+  onAddTask,
+  onDeleteCard,
+  onEditCard,
+}) => {
   const [columnCards, setColumnCards] = useState(cards);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -44,6 +51,7 @@ const Column = ({ title, cards = [], isToDo, onAddTask, onDeleteCard }) => {
             creationDate={card.creationDate}
             onDelete={handleDeleteCard}
             columnTitle={title}
+            onEdit={onEditCard}
           />
         ))}
       </div>

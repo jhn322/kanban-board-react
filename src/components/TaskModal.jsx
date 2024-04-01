@@ -13,6 +13,12 @@ const TaskModal = ({ onClose, onAdd }) => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleCreateTask();
+    }
+  };
+
   return (
     <div className="add-modal">
       <div className="add-modal-content">
@@ -23,18 +29,20 @@ const TaskModal = ({ onClose, onAdd }) => {
           <h2>To Do</h2>
         </div>
         <div className="add-modal-input">
-          <div className="add-input-wrapper">
+          <div>
             <input
               className="add-task-title"
               type="text"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
+              onKeyDown={handleKeyPress}
               placeholder="Task title"
             />
             <textarea
               className="add-task-text"
               value={text}
               onChange={(event) => setText(event.target.value)}
+              onKeyDown={handleKeyPress}
               placeholder="Task text"
             />
           </div>
