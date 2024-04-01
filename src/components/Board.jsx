@@ -73,6 +73,11 @@ const Board = () => {
     setEditCardInfo(null);
   };
 
+  const handleCardClick = (id, title, text) => {
+    setIsModalOpen(true);
+    setEditCardInfo({ id, title, text });
+  };
+
   const page = location.pathname.substring(1);
   const filteredColumns =
     page === ""
@@ -97,6 +102,7 @@ const Board = () => {
             onAddTask={handleAddTask}
             onDeleteCard={handleDeleteCard}
             onEditCard={handleEditCard}
+            onCardClick={handleCardClick}
           />
         ))
       )}

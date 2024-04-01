@@ -9,6 +9,7 @@ const Column = ({
   onAddTask,
   onDeleteCard,
   onEditCard,
+  onCardClick,
 }) => {
   const [columnCards, setColumnCards] = useState(cards);
   const [isHovered, setIsHovered] = useState(false);
@@ -52,6 +53,7 @@ const Column = ({
             onDelete={handleDeleteCard}
             columnTitle={title}
             onEdit={onEditCard}
+            onCardClick={onCardClick}
           />
         ))}
       </div>

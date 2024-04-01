@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import { BsPencilSquare } from "react-icons/bs";
 
 const Card = ({
   id,
@@ -11,10 +10,12 @@ const Card = ({
   onDelete,
   columnTitle,
   onEdit,
+  onCardClick,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleDelete = () => {
+  const handleDelete = (event) => {
+    event.stopPropagation();
     onDelete(id, index, columnTitle);
   };
 
@@ -30,11 +31,17 @@ const Card = ({
     setIsHovered(false);
   };
 
+  const handleCardClick = () => {
+    onCardClick(id, title, text);
+  };
+
   return (
     <div
       className="card"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleCardClick}
+      style={{ cursor: "pointer" }}
     >
       <h3 className="card-title">{title}</h3>
       <p className="card-text">{text}</p>
@@ -45,15 +52,6 @@ const Card = ({
         <FaTrash
           className="trash-icon"
           onClick={handleDelete}
-          style={{
-            fill: isHovered ? "url(#gradient)" : "#000000",
-            cursor: "pointer",
-            transition: "fill 0.3s ease",
-          }}
-        />
-        <BsPencilSquare
-          className="edit-icon"
-          onClick={handleEdit}
           style={{
             fill: isHovered ? "url(#gradient)" : "#000000",
             cursor: "pointer",
