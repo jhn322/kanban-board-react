@@ -5,6 +5,7 @@ import Card from "./Card";
 const Column = ({ title, cards = [], isToDo, onAddTask, onDeleteCard }) => {
   const [columnCards, setColumnCards] = useState(cards);
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleDeleteCard = (id, index) => {
     const updatedCards = [...columnCards];
@@ -19,6 +20,12 @@ const Column = ({ title, cards = [], isToDo, onAddTask, onDeleteCard }) => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleNewTaskClick = () => {
+    onAddTask();
+    setIsClicked(true);
+    setTimeout(() => setIsClicked(false), 300);
   };
 
   return (
@@ -43,9 +50,12 @@ const Column = ({ title, cards = [], isToDo, onAddTask, onDeleteCard }) => {
       {isToDo && (
         <div
           className="new-task-icon"
-          onClick={onAddTask}
+          onClick={handleNewTaskClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          style={{
+            animation: isClicked ? "spin 0.5s linear" : "none",
+          }}
         >
           <BsPlusSquareFill
             style={{

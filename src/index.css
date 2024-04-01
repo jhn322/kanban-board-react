@@ -274,6 +274,15 @@ li:hover {
   border-radius: 10px;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .add-modal-button:hover {
   background-image: linear-gradient(to right, #783db2, #f2379a, #fd8173);
   color: #fff;
