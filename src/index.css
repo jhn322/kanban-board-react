@@ -325,15 +325,6 @@ li:hover {
     margin-top: 0.5rem;
   }
 
-  /* New gradient */
-  .gradient,
-  li:hover {
-    background: linear-gradient(to right, #f2379a, #783db2, #45c7a5);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .nav-links {
     margin-top: 0.5rem;
     font-size: 16px;
