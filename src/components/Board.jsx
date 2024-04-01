@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useColumns } from "../components/ColumnContext";
 import { useLocation } from "react-router-dom";
 import Column from "./Column";
@@ -8,6 +8,17 @@ const Board = () => {
   const { columns, setColumns } = useColumns();
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // Added a loading state because Column component rendered before localStorage loaded
+  const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect to retrieve columns data from localStorage
+  useEffect(() => {
+    const savedColumns = JSON.parse(localStorage.getItem("columns"));
+    if (savedColumns) {
+      setColumns(savedColumns);
+    }
+    setIsLoading(false);
+  }, []);
 
   const handleCreateTask = ({ title, text }) => {
     const newColumns = [...columns];
@@ -26,6 +37,9 @@ const Board = () => {
         creationDate: formattedDate,
       });
       setColumns(newColumns);
+
+      // Update localStorage with the new columns data
+      localStorage.setItem("columns", JSON.stringify(newColumns));
     }
   };
 
@@ -48,15 +62,19 @@ const Board = () => {
 
   return (
     <div className="board">
-      {filteredColumns.map((column, index) => (
-        <Column
-          key={index}
-          title={column.title}
-          cards={column.cards}
-          isToDo={column.title.toLowerCase() === "to do"}
-          onAddTask={handleAddTask}
-        />
-      ))}
+      {isLoading ? ( // Show loading indicator while data is being retrieved
+        <div>Loading...</div>
+      ) : (
+        filteredColumns.map((column, index) => (
+          <Column
+            key={column.title}
+            title={column.title}
+            cards={column.cards}
+            isToDo={column.title.toLowerCase() === "to do"}
+            onAddTask={handleAddTask}
+          />
+        ))
+      )}
       {isModalOpen && (
         <CreateTask
           onClose={() => setIsModalOpen(false)}

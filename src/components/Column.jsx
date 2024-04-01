@@ -40,9 +40,10 @@ const Column = ({ title, cards = [], isToDo, onAddTask }) => {
         <h2>{title}</h2>
       </div>
       <div className="card-list">
+        {/* Unique ID for each card */}
         {columnCards.map((card, index) => (
           <Card
-            key={card.id}
+            key={`${card.id}-${index}`}
             id={card.id}
             index={index}
             title={card.title}
