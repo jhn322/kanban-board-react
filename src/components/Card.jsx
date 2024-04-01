@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaTrash } from "react-icons/fa";
 
 const Card = ({ id, index, title, text, creationDate, onDelete }) => {
   const [isHovered, setIsHovered] = useState(false);
+  cosnt[(isLongPressing, setIsLongpressing)] = useState(false);
+  const timerRef = useRef(null);
 
   const handleDelete = () => {
     onDelete(id, index);
@@ -16,11 +18,29 @@ const Card = ({ id, index, title, text, creationDate, onDelete }) => {
     setIsHovered(false);
   };
 
+  // Handle the delete function on mobile devices more intuitively
+  const handleTouchStart = () => {
+    setIsLongpressing(false);
+    timerRef.current = setTimeout(() => {
+      setIsLongpressing(true);
+      setIsHovered(true);
+    }, 500);
+  };
+
+  const handleTouchEnd = () => {
+    clearTimeout(timerRef.current);
+    if (!isLongPressing) {
+      setIsHovered(false);
+    }
+  };
+
   return (
     <div
       className="card"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <h3 className="card-title">{title}</h3>
       <p className="card-text">{text}</p>
