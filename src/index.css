@@ -300,7 +300,6 @@ li:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   padding: 100px;
   width: 450px;
   height: 700px;
@@ -336,6 +335,7 @@ li:hover {
 
 /* Edit card headline input field */
 .card-task-title {
+  text-align: center;
   height: 50px;
   width: 400px;
   padding: 10px;
@@ -392,6 +392,7 @@ li:hover {
 
 .card-modal-date {
   margin: 14px 0;
+  color: rgb(108, 108, 108);
   width: 230px;
 }
 /* -------------------------------------------- */
