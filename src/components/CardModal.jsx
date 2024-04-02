@@ -37,9 +37,6 @@ const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
             &times;
           </span>
         </div>
-        <div className="card-modal-info">
-          <p className="card-modal-date">Created on: {creationDate}</p>
-        </div>
         <div className="card-modal-input">
           <div>
             <input
@@ -68,6 +65,9 @@ const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
           <button className="card-modal-delete-button" onClick={handleDelete}>
             Delete
           </button>
+        </div>
+        <div className="card-modal-info">
+          <p className="card-modal-date">Created on: {creationDate}</p>
         </div>
       </div>
     </div>
