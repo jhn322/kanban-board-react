@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-const CardModal = ({ onClose, cardInfo, onUpdate, onDelete }) => {
+const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
   const [title, setTitle] = useState(cardInfo.title);
   const [text, setText] = useState(cardInfo.text);
-
+  console.log("Props in CardModal:", {
+    onClose,
+    cardInfo,
+    creationDate,
+    onUpdate,
+    onDelete,
+  });
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
@@ -36,6 +42,9 @@ const CardModal = ({ onClose, cardInfo, onUpdate, onDelete }) => {
           <span className="card-close-icon" onClick={onClose}>
             &times;
           </span>
+        </div>
+        <div className="card-modal-info">
+          <p className="card-modal-date">Created on: {creationDate}</p>
         </div>
         <div className="card-modal-input">
           <div>

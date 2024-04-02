@@ -9,7 +9,6 @@ const Card = ({
   creationDate,
   onDelete,
   columnTitle,
-  onEdit,
   onCardClick,
 }) => {
   const handleDelete = (event) => {
@@ -17,12 +16,8 @@ const Card = ({
     onDelete(id, index, columnTitle);
   };
 
-  const handleEdit = () => {
-    onEdit(id, title, text);
-  };
-
   const handleCardClick = () => {
-    onCardClick(id, title, text);
+    onCardClick(id, title, text, creationDate);
   };
 
   return (

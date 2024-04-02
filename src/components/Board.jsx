@@ -73,9 +73,9 @@ const Board = () => {
     setEditCardInfo(null);
   };
 
-  const handleCardClick = (id, title, text) => {
+  const handleCardClick = (id, title, text, creationDate) => {
     setIsModalOpen(true);
-    setEditCardInfo({ id, title, text });
+    setEditCardInfo({ id, title, text, creationDate });
   };
 
   const page = location.pathname.substring(1);
@@ -111,6 +111,43 @@ const Board = () => {
         <CardModal
           onClose={handleCloseModal}
           cardInfo={editCardInfo}
+          creationDate={editCardInfo.creationDate}
+          onUpdate={(updatedTitle, updatedText) => {
+            const updatedColumns = columns.map((column) => {
+              const updatedCards = column.cards.map((card) => {
+                if (card.id === editCardInfo.id) {
+                  return {
+                    ...card,
+                    title: updatedTitle,
+                    text: updatedText,
+                  };
+                }
+                return card;
+              });
+              return {
+                ...column,
+                cards: updatedCards,
+              };
+            });
+            setColumns(updatedColumns);
+            localStorage.setItem("columns", JSON.stringify(updatedColumns));
+          }}
+          onDelete={(id) => {
+            const updatedColumns = columns.map((column) => ({
+              ...column,
+              cards: column.cards.filter((card) => card.id !== id),
+            }));
+            setColumns(updatedColumns);
+            localStorage.setItem("columns", JSON.stringify(updatedColumns));
+          }}
+        />
+      )}
+
+      {isModalOpen && editCardInfo && (
+        <CardModal
+          onClose={handleCloseModal}
+          cardInfo={editCardInfo}
+          creationDate={editCardInfo.creationDate}
           onUpdate={(updatedTitle, updatedText) => {
             const updatedColumns = columns.map((column) => {
               const updatedCards = column.cards.map((card) => {
