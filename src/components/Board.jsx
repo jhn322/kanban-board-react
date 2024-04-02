@@ -18,7 +18,7 @@ const Board = () => {
       setColumns(savedColumns);
     }
     setIsLoading(false);
-  }, []);
+  }, [setColumns]);
 
   const handleEditCard = (id, title, text) => {
     setIsModalOpen(true);
@@ -26,32 +26,34 @@ const Board = () => {
   };
 
   const handleCreateTask = ({ title, text }) => {
-    const newColumns = [...columns];
-    const todoColumnIndex = newColumns.findIndex(
-      (column) => column.title.toLowerCase() === "to do"
-    );
-    if (todoColumnIndex !== -1) {
-      const currentDate = new Date();
-      const formattedDate = `${currentDate.getFullYear()}/${
-        currentDate.getMonth() + 1
-      }/${currentDate.getDate()}`;
+    const newColumns = columns.map((column) => {
+      if (column.title.toLowerCase() === "to do") {
+        const currentDate = new Date();
+        const formattedDate = `${currentDate.getFullYear()}/${
+          currentDate.getMonth() + 1
+        }/${currentDate.getDate()}`;
 
-      const generateUniqueId = () => {
-        return "_" + Math.random().toString(36).substring(2, 9);
-      };
+        const generateUniqueId = () => {
+          return "_" + Math.random().toString(36).substring(2, 9);
+        };
 
-      const newCard = {
-        id: generateUniqueId(),
-        title,
-        text,
-        creationDate: formattedDate,
-      };
+        const newCard = {
+          id: generateUniqueId(),
+          title,
+          text,
+          creationDate: formattedDate,
+        };
 
-      newColumns[todoColumnIndex].cards.push(newCard);
-      setColumns(newColumns);
+        return {
+          ...column,
+          cards: [...column.cards, newCard],
+        };
+      }
+      return column;
+    });
 
-      localStorage.setItem("columns", JSON.stringify(newColumns));
-    }
+    setColumns(newColumns);
+    localStorage.setItem("columns", JSON.stringify(newColumns));
   };
 
   const handleDeleteCard = (id, index, columnTitle) => {
