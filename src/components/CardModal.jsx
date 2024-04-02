@@ -3,13 +3,7 @@ import { useState } from "react";
 const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
   const [title, setTitle] = useState(cardInfo.title);
   const [text, setText] = useState(cardInfo.text);
-  console.log("Props in CardModal:", {
-    onClose,
-    cardInfo,
-    creationDate,
-    onUpdate,
-    onDelete,
-  });
+
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };

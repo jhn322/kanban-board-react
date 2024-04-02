@@ -36,11 +36,18 @@ const Board = () => {
         currentDate.getMonth() + 1
       }/${currentDate.getDate()}`;
 
-      newColumns[todoColumnIndex].cards.push({
+      const generateUniqueId = () => {
+        return "_" + Math.random().toString(36).substr(2, 9);
+      };
+
+      const newCard = {
+        id: generateUniqueId(),
         title,
         text,
         creationDate: formattedDate,
-      });
+      };
+
+      newColumns[todoColumnIndex].cards.push(newCard);
       setColumns(newColumns);
 
       localStorage.setItem("columns", JSON.stringify(newColumns));
@@ -50,8 +57,7 @@ const Board = () => {
   const handleDeleteCard = (id, index, columnTitle) => {
     const updatedColumns = columns.map((column) => {
       if (column.title.toLowerCase() === columnTitle.toLowerCase()) {
-        const updatedCards = [...column.cards];
-        updatedCards.splice(index, 1);
+        const updatedCards = column.cards.filter((card) => card.id !== id);
         return {
           ...column,
           cards: updatedCards,
@@ -105,42 +111,6 @@ const Board = () => {
             onCardClick={handleCardClick}
           />
         ))
-      )}
-
-      {isModalOpen && editCardInfo && (
-        <CardModal
-          onClose={handleCloseModal}
-          cardInfo={editCardInfo}
-          creationDate={editCardInfo.creationDate}
-          onUpdate={(updatedTitle, updatedText) => {
-            const updatedColumns = columns.map((column) => {
-              const updatedCards = column.cards.map((card) => {
-                if (card.id === editCardInfo.id) {
-                  return {
-                    ...card,
-                    title: updatedTitle,
-                    text: updatedText,
-                  };
-                }
-                return card;
-              });
-              return {
-                ...column,
-                cards: updatedCards,
-              };
-            });
-            setColumns(updatedColumns);
-            localStorage.setItem("columns", JSON.stringify(updatedColumns));
-          }}
-          onDelete={(id) => {
-            const updatedColumns = columns.map((column) => ({
-              ...column,
-              cards: column.cards.filter((card) => card.id !== id),
-            }));
-            setColumns(updatedColumns);
-            localStorage.setItem("columns", JSON.stringify(updatedColumns));
-          }}
-        />
       )}
 
       {isModalOpen && editCardInfo && (
