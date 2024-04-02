@@ -11,14 +11,10 @@ const Column = ({
   onEditCard,
   onCardClick,
 }) => {
-  const [columnCards, setColumnCards] = useState(cards);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleDeleteCard = (id, index) => {
-    const updatedCards = [...columnCards];
-    updatedCards.splice(index, 1);
-    setColumnCards(updatedCards);
     onDeleteCard(id, index, title);
   };
 
@@ -42,7 +38,7 @@ const Column = ({
         <h2>{title}</h2>
       </div>
       <div className="card-list">
-        {columnCards.map((card, index) => (
+        {cards.map((card, index) => (
           <Card
             key={`${card.id}-${index}`}
             id={card.id}
