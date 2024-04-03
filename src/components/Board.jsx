@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useColumns } from "../components/ColumnContext";
 import { useLocation } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
 import Column from "./Column";
 import TaskModal from "./TaskModal";
 import CardModal from "./CardModal";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Board = () => {
+  const { toggleTheme, theme } = useTheme();
   const { columns, setColumns } = useColumns();
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -97,7 +100,8 @@ const Board = () => {
         );
 
   return (
-    <div className="board">
+    <div className={`board ${theme}`}>
+      <ThemeSwitcher />
       {isLoading ? (
         <div>Loading...</div>
       ) : (
@@ -111,12 +115,13 @@ const Board = () => {
             onDeleteCard={handleDeleteCard}
             onEditCard={handleEditCard}
             onCardClick={handleCardClick}
+            className={theme === "alternate" ? "theme" : ""}
           />
         ))
       )}
-
       {isModalOpen && editCardInfo && (
         <CardModal
+          theme={theme}
           onClose={handleCloseModal}
           cardInfo={editCardInfo}
           creationDate={editCardInfo.creationDate}
@@ -151,7 +156,11 @@ const Board = () => {
         />
       )}
       {isModalOpen && !editCardInfo && (
-        <TaskModal onClose={handleCloseModal} onAdd={handleCreateTask} />
+        <TaskModal
+          theme={theme}
+          onClose={handleCloseModal}
+          onAdd={handleCreateTask}
+        />
       )}
     </div>
   );

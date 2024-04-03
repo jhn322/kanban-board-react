@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TaskModal = ({ onClose, onAdd }) => {
+const TaskModal = ({ theme, onClose, onAdd }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
@@ -21,17 +21,23 @@ const TaskModal = ({ onClose, onAdd }) => {
 
   return (
     <div className="add-modal">
-      <div className="add-modal-content">
+      <div
+        className={`add-modal-content ${theme === "alternate" ? "theme" : ""}`}
+      >
         <span className="add-close-icon" onClick={onClose}>
           &times;
         </span>
-        <div className="add-modal-title">
+        <div
+          className={`add-modal-title ${theme === "alternate" ? "theme" : ""}`}
+        >
           <h2>New Task</h2>
         </div>
         <div className="add-modal-input">
           <div>
             <input
-              className="add-task-title"
+              className={`add-task-title ${
+                theme === "alternate" ? "theme" : ""
+              }`}
               type="text"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
@@ -39,7 +45,9 @@ const TaskModal = ({ onClose, onAdd }) => {
               placeholder="Task title"
             />
             <textarea
-              className="add-task-text"
+              className={`add-task-text ${
+                theme === "alternate" ? "theme" : ""
+              }`}
               value={text}
               onChange={(event) => setText(event.target.value)}
               onKeyDown={handleKeyPress}
@@ -48,7 +56,12 @@ const TaskModal = ({ onClose, onAdd }) => {
           </div>
         </div>
         <div>
-          <button className="add-modal-button" onClick={handleCreateTask}>
+          <button
+            className={`add-modal-button ${
+              theme === "alternate" ? "theme" : ""
+            }`}
+            onClick={handleCreateTask}
+          >
             Add
           </button>
         </div>

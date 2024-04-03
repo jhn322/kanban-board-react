@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
+const CardModal = ({
+  theme,
+  onClose,
+  cardInfo,
+  creationDate,
+  onUpdate,
+  onDelete,
+}) => {
   const [title, setTitle] = useState(cardInfo.title);
   const [text, setText] = useState(cardInfo.text);
 
@@ -30,8 +37,12 @@ const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
 
   return (
     <div className="card-modal">
-      <div className="card-modal-content">
-        <div className="card-modal-title">
+      <div
+        className={`card-modal-content ${theme === "alternate" ? "theme" : ""}`}
+      >
+        <div
+          className={`card-modal-title ${theme === "alternate" ? "theme" : ""}`}
+        >
           <h2>Edit Card</h2>
           <span className="card-close-icon" onClick={onClose}>
             &times;
@@ -40,7 +51,9 @@ const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
         <div className="card-modal-input">
           <div>
             <input
-              className="card-task-title"
+              className={`card-task-title ${
+                theme === "alternate" ? "theme" : ""
+              }`}
               type="text"
               id="title"
               value={title}
@@ -49,7 +62,9 @@ const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
               placeholder="Edit title"
             />
             <textarea
-              className="card-task-text"
+              className={`card-task-text ${
+                theme === "alternate" ? "theme" : ""
+              }`}
               id="text"
               value={text}
               onChange={handleTextChange}
@@ -59,10 +74,20 @@ const CardModal = ({ onClose, cardInfo, creationDate, onUpdate, onDelete }) => {
           </div>
         </div>
         <div className="card-modal-buttons">
-          <button className="card-modal-update-button" onClick={handleUpdate}>
+          <button
+            className={`card-modal-update-button ${
+              theme === "alternate" ? "theme" : ""
+            }`}
+            onClick={handleUpdate}
+          >
             Update
           </button>
-          <button className="card-modal-delete-button" onClick={handleDelete}>
+          <button
+            className={`card-modal-delete-button ${
+              theme === "alternate" ? "theme" : ""
+            }`}
+            onClick={handleDelete}
+          >
             Delete
           </button>
         </div>

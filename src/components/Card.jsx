@@ -2,6 +2,7 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 
 const Card = ({
+  theme,
   id,
   index,
   title,

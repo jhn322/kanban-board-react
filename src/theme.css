@@ -1,0 +1,59 @@
+/* Toggle button */
+.toggle-theme {
+  position: absolute;
+  top: 4px;
+  right: -8px;
+  height: 40px;
+  width: 60px;
+  border: none;
+  background-color: transparent;
+}
+.nav.theme {
+  background-color: rgba(72, 202, 164, 0.3);
+}
+
+.column.theme {
+  background-color: rgba(169, 15, 252, 0.3);
+}
+
+/* --------Alternate theme-------- */
+.card-modal-content.theme,
+.card-task-title.theme,
+.card-task-text.theme,
+.card-modal-update-button.theme,
+.card-modal-delete-button.theme,
+.add-modal-content.theme,
+.add-task-title.theme,
+.add-task-text.theme,
+.add-modal-button.theme {
+  background-color: rgba(169, 15, 252, 0.3);
+  color: rgb(216, 144, 255);
+}
+
+.card-modal-update-button.theme {
+  border: none;
+}
+
+.card-modal-delete-button.theme {
+  color: #f23737;
+  border: none;
+}
+
+.add-task-title.theme::placeholder,
+.add-task-text.theme::placeholder {
+  color: rgb(216, 144, 255);
+}
+
+.add-task-title.theme:active,
+.add-task-text.theme:active {
+  outline: 1px solid black;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav.theme {
+    background-color: transparent;
+  }
+  .nav-link.theme {
+    background-color: rgba(169, 15, 252, 0.3);
+  }
+}

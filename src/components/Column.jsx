@@ -3,6 +3,8 @@ import { BsPlusSquareFill } from "react-icons/bs";
 import Card from "./Card";
 
 const Column = ({
+  theme,
+  className,
   title,
   cards = [],
   isToDo,
@@ -33,13 +35,14 @@ const Column = ({
   };
 
   return (
-    <div className="column">
+    <div className={`column ${className}`}>
       <div className="column-title">
         <h2>{title}</h2>
       </div>
       <div className="card-list">
         {cards.map((card, index) => (
           <Card
+            theme={theme}
             key={`${card.id}-${index}`}
             id={card.id}
             index={index}

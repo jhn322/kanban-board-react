@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
+import { useTheme } from "./ThemeContext";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBurgerMenu, setShowBurgerMenu] = useState(true);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,7 +31,7 @@ const Nav = () => {
 
   return (
     <div className={`nav-container ${isMenuOpen ? "menu-open" : ""}`}>
-      <div className="nav">
+      <div className={`nav ${theme === "alternate" ? "theme" : ""}`}>
         <div>
           <h1 className={`headline ${isMenuOpen ? "hidden" : ""}`}>
             <span className="gradient">KANBAN</span> BOARD
@@ -71,22 +73,34 @@ const Nav = () => {
         <div className={`nav-links ${isMenuOpen ? "show" : ""}`}>
           <ul>
             <li>
-              <NavLink to="/" className="nav-link">
+              <NavLink
+                to="/"
+                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/todo" className="nav-link">
+              <NavLink
+                to="/todo"
+                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
+              >
                 To Do
               </NavLink>
             </li>
             <li>
-              <NavLink to="/doing" className="nav-link">
+              <NavLink
+                to="/doing"
+                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
+              >
                 Doing
               </NavLink>
             </li>
             <li>
-              <NavLink to="/done" className="nav-link">
+              <NavLink
+                to="/done"
+                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
+              >
                 Done
               </NavLink>
             </li>
