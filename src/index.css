@@ -22,7 +22,6 @@ a {
 }
 
 /* Primary background styles */
-.nav,
 .column,
 .add-modal-content,
 .column-title > h2,
@@ -71,12 +70,7 @@ a {
 }
 
 /* -----------------Navbar----------------- */
-.headline {
-  letter-spacing: 1.5rem;
-}
-
-/* Gradient for headline and nav links */
-.gradient,
+/* Gradient for nav links */
 li:hover {
   background: linear-gradient(to right, #783db2, #f2379a, #fd8173);
   background-clip: text;
@@ -89,22 +83,23 @@ li:hover {
 .nav-links {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 /* Nav styling */
 .nav {
-  min-height: 7vh;
-  min-width: 40rem;
+  min-height: 5vh;
   padding: 0 2rem;
 }
 
 /* Padding nav links */
 .nav-links {
-  margin: 0 0 0.5rem 0;
-  font-size: 20px;
-  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.2rem;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .nav-links ul {
@@ -115,8 +110,12 @@ li:hover {
 /* Li in nav */
 .nav-links li {
   list-style: none;
-  padding: 0 20px;
+  padding: 0 10px;
   text-align: center;
+}
+
+.nav-link {
+  margin: 0 2rem;
 }
 
 /* Center all items in app */
@@ -128,7 +127,7 @@ li:hover {
 .board {
   display: flex;
   justify-content: center;
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 /* Styling for columns in board */
@@ -465,6 +464,10 @@ li:hover {
     backdrop-filter: none;
   }
 
+  .nav-link-wrapper:last-child .separator {
+    display: none;
+  }
+
   /* Hide by default */
   .nav-links {
     display: none;
@@ -483,8 +486,8 @@ li:hover {
   /* Row flex */
   .nav-links ul {
     display: flex;
-    font-size: 20px;
-    margin-top: -0.5rem;
+    font-size: 16px;
+    margin-top: -0.3rem;
   }
 
   .nav-links li {
@@ -586,12 +589,11 @@ li:hover {
 @media only screen and (min-width: 801px) and (max-width: 900px) {
   /* More room in nav */
   .nav-links {
-    margin-top: -1rem;
     padding: 10px 0;
   }
 
   .nav-links ul {
-    margin-top: 1rem;
+    margin-top: -0.1rem;
   }
 
   /* Less width */

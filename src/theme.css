@@ -1,22 +1,19 @@
 /* Toggle button */
 .toggle-theme {
   position: absolute;
-  top: 4px;
-  right: -8px;
+  top: 19px;
+  right: 14px;
   height: 40px;
-  width: 60px;
+  width: 40px;
   border: none;
   background-color: transparent;
 }
-.nav.theme {
-  background-color: rgba(72, 202, 164, 0.3);
-}
 
+/* --------Alternate theme-------- */
 .column.theme {
   background-color: rgba(169, 15, 252, 0.3);
 }
 
-/* --------Alternate theme-------- */
 .card-modal-content.theme,
 .card-task-title.theme,
 .card-task-text.theme,
@@ -30,6 +27,7 @@
   color: rgb(216, 144, 255);
 }
 
+/* Modals buttons */
 .card-modal-update-button.theme {
   border: none;
 }
@@ -39,6 +37,7 @@
   border: none;
 }
 
+/* Modals inputs */
 .add-task-title.theme::placeholder,
 .add-task-text.theme::placeholder {
   color: rgb(216, 144, 255);
@@ -49,7 +48,15 @@
   outline: 1px solid black;
 }
 
+/* Mobile style  */
 @media only screen and (max-width: 800px) {
+  .toggle-theme {
+    position: absolute;
+    top: 4px;
+    right: 2px;
+    width: 36px;
+  }
+
   .nav.theme {
     background-color: transparent;
   }

@@ -32,11 +32,6 @@ const Nav = () => {
   return (
     <div className={`nav-container ${isMenuOpen ? "menu-open" : ""}`}>
       <div className={`nav ${theme === "alternate" ? "theme" : ""}`}>
-        <div>
-          <h1 className={`headline ${isMenuOpen ? "hidden" : ""}`}>
-            <span className="gradient">KANBAN</span> BOARD
-          </h1>
-        </div>
         {showBurgerMenu && (
           <button
             className="burger-menu"
