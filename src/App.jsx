@@ -1,8 +1,8 @@
 import React from "react";
 import Board from "./components/Board";
 import Nav from "./components/Nav";
-import { ColumnProvider } from "./components/ColumnContext";
-import { ThemeProvider } from "./components/ThemeContext";
+import { ColumnProvider } from "./context/ColumnContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

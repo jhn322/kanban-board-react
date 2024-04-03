@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useColumns } from "../components/ColumnContext";
+import { useColumns } from "../context/ColumnContext";
 import { useLocation } from "react-router-dom";
-import { useTheme } from "./ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 import Column from "./Column";
 import TaskModal from "./TaskModal";
 import CardModal from "./CardModal";
