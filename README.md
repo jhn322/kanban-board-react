@@ -1,4 +1,4 @@
-# Kanban To do - React:
+# Kanban Board - React:
 
 ## Libraries installed
 
