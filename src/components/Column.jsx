@@ -12,6 +12,10 @@ const Column = ({
   onDeleteCard,
   onEditCard,
   onCardClick,
+  onDragStart,
+  onDragEnter,
+  onDragOver,
+  onDrop,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -35,25 +39,37 @@ const Column = ({
   };
 
   return (
-    <div className={`column ${className}`}>
+    <div
+      className={`column ${className}`}
+      onDragOver={(event) => onDragOver(event)}
+      onDrop={(e) => onDrop(e, title)}
+    >
       <div className="column-title">
         <h2>{title}</h2>
       </div>
       <div className="card-list">
         {cards.map((card, index) => (
-          <Card
-            theme={theme}
+          <div
             key={`${card.id}-${index}`}
-            id={card.id}
-            index={index}
-            title={card.title}
-            text={card.text}
-            creationDate={card.creationDate}
-            onDelete={handleDeleteCard}
-            columnTitle={title}
-            onEdit={onEditCard}
-            onCardClick={onCardClick}
-          />
+            draggable
+            onDragStart={(e) => onDragStart(e, card)}
+            onDragEnter={(e) => onDragEnter(e, title)}
+            onClick={() =>
+              onCardClick(card.id, card.title, card.text, card.creationDate)
+            }
+          >
+            <Card
+              theme={theme}
+              id={card.id}
+              index={index}
+              title={card.title}
+              text={card.text}
+              creationDate={card.creationDate}
+              onDelete={handleDeleteCard}
+              columnTitle={title}
+              onEdit={onEditCard}
+            />
+          </div>
         ))}
       </div>
       {isToDo && (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useColumns } from "../context/ColumnContext";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
@@ -14,6 +14,7 @@ const Board = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editCardInfo, setEditCardInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [draggedItem, setDraggedItem] = useState(null);
 
   useEffect(() => {
     const savedColumns = JSON.parse(localStorage.getItem("columns"));
@@ -22,6 +23,38 @@ const Board = () => {
     }
     setIsLoading(false);
   }, [setColumns]);
+
+  const handleDragStart = (e, item) => {
+    setDraggedItem(item);
+  };
+
+  const handleDragEnter = (e, targetColumn) => {
+    e.preventDefault();
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e, targetColumn) => {
+    e.preventDefault();
+    const updatedColumns = columns.map((column) => {
+      let updatedCards;
+      if (column.title.toLowerCase() === targetColumn.toLowerCase()) {
+        updatedCards = column.cards.concat(draggedItem);
+      } else {
+        updatedCards = column.cards.filter(
+          (card) => card.id !== draggedItem.id
+        );
+      }
+      return {
+        ...column,
+        cards: updatedCards,
+      };
+    });
+    setColumns(updatedColumns);
+    localStorage.setItem("columns", JSON.stringify(updatedColumns));
+  };
 
   const handleEditCard = (id, title, text) => {
     setIsModalOpen(true);
@@ -90,35 +123,39 @@ const Board = () => {
   };
 
   const page = location.pathname.substring(1);
-  const filteredColumns =
-    page === ""
-      ? columns
-      : columns.filter(
-          (column) =>
-            column.title.toLowerCase() === page.toLowerCase() ||
-            column.title.toLowerCase().replace(" ", "") === page.toLowerCase()
-        );
+  let filteredColumns;
+
+  if (page === "") {
+    filteredColumns = columns;
+  } else {
+    filteredColumns = columns.filter(
+      (column) =>
+        column.title.toLowerCase() === page.toLowerCase() ||
+        column.title.toLowerCase().replace(" ", "") === page.toLowerCase()
+    );
+  }
 
   return (
     <div className={`board ${theme}`}>
       <ThemeSwitcher />
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        filteredColumns.map((column, index) => (
-          <Column
-            key={column.title}
-            title={column.title}
-            cards={column.cards}
-            isToDo={column.title.toLowerCase() === "to do"}
-            onAddTask={handleAddTask}
-            onDeleteCard={handleDeleteCard}
-            onEditCard={handleEditCard}
-            onCardClick={handleCardClick}
-            className={theme === "alternate" ? "theme" : ""}
-          />
-        ))
-      )}
+      {filteredColumns.map((column, index) => (
+        <Column
+          key={column.title}
+          title={column.title}
+          cards={column.cards}
+          isToDo={column.title.toLowerCase() === "to do"}
+          onAddTask={handleAddTask}
+          onDeleteCard={handleDeleteCard}
+          onEditCard={handleEditCard}
+          onCardClick={handleCardClick}
+          onDragStart={handleDragStart}
+          onDragEnter={handleDragEnter}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          draggedItem={draggedItem}
+          className={theme === "alternate" ? "theme" : ""}
+        />
+      ))}
       {isModalOpen && editCardInfo && (
         <CardModal
           theme={theme}
