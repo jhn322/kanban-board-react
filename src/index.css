@@ -107,6 +107,12 @@ li:hover {
   font-weight: 500;
 }
 
+.nav-links ul {
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+/* Li in nav */
 .nav-links li {
   list-style: none;
   padding: 0 20px;
@@ -144,6 +150,7 @@ li:hover {
   display: none;
 }
 
+/* Columns flex */
 .column-title {
   display: flex;
   align-items: center;
@@ -170,6 +177,7 @@ li:hover {
   white-space: nowrap;
 }
 
+/* Date in cards */
 .card-date-container {
   position: absolute;
   top: 79px;
@@ -207,6 +215,7 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+/* Flex and size new task modal */
 .add-modal-content {
   display: flex;
   flex-direction: column;
@@ -251,6 +260,7 @@ li:hover {
   font-weight: 500;
 }
 
+/* Input field */
 .add-task-title {
   height: 50px;
   width: 500px;
@@ -259,6 +269,7 @@ li:hover {
   font-weight: 700;
 }
 
+/* Textarea */
 .add-task-text {
   height: 200px;
   width: 500px;
@@ -295,6 +306,7 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+/* Flex and size */
 .card-modal-content {
   display: flex;
   flex-direction: column;
@@ -410,6 +422,7 @@ li:hover {
   border-radius: 10px;
 }
 
+/* Icon spin */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -421,30 +434,60 @@ li:hover {
 
 /* Mobile */
 @media only screen and (max-width: 800px) {
+  /* Hide headline in mobile */
+  .headline {
+    display: none;
+  }
+
   .nav-container {
     margin-top: 0.5rem;
+    margin-bottom: -2.2rem;
   }
 
+  /* Hide normal nav bg style */
   .nav {
-    height: 5.5rem;
-    min-width: 20rem;
-    padding: 0 14px;
+    min-width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
-  .headline {
-    letter-spacing: 0.75rem;
-    font-size: 22px;
-    margin-top: 0.5rem;
-  }
-
+  /* Hide by default */
   .nav-links {
+    display: none;
     margin-top: 0.5rem;
-    font-size: 16px;
+  }
+
+  /* Show nav */
+  .nav-links.show {
+    display: block;
+  }
+
+  .nav-links.show li {
+    border-radius: 10px;
+  }
+
+  /* Row flex */
+  .nav-links ul {
+    display: flex;
+    font-size: 20px;
+    margin-top: -0.5rem;
   }
 
   .nav-links li {
-    margin: 0;
-    padding: 0 20px;
+    padding: 0 10px;
+    display: flex;
+  }
+
+  /* Styling individual nav link */
+  .nav-link {
+    font-weight: 700;
+    padding: 2px 8px;
+    margin: 0 -6.5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
   }
 
   /* Changed to column for mobile view */
@@ -453,7 +496,7 @@ li:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   /* Less height & width */
@@ -481,11 +524,13 @@ li:hover {
     display: none;
   }
 
+  /* Smaller title */
   .add-task-title {
     height: 50px;
     width: 270px;
   }
 
+  /* Smaller textarea */
   .add-task-text {
     height: 170px;
     width: 270px;
@@ -498,7 +543,7 @@ li:hover {
     margin-top: 18px;
   }
 
-  /* Edit card text input field */
+  /* Smaller edit card text input field */
   .card-task-text {
     height: 310px;
     width: 270px;
@@ -529,6 +574,10 @@ li:hover {
   .nav-links {
     margin-top: -1rem;
     padding: 10px 0;
+  }
+
+  .nav-links ul {
+    margin-top: 1rem;
   }
 
   /* Less width */
