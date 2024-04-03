@@ -255,6 +255,7 @@ li:hover {
 .add-modal-button {
   width: 120px;
   height: 40px;
+  color: #000000;
   margin: 0 20px;
   border: none;
   font-weight: 500;
@@ -385,15 +386,19 @@ li:hover {
   height: 40px;
   margin: 0 20px;
   background-color: #fff;
+  color: #000000;
   border: 1px solid black;
   font-weight: 500;
   border-radius: 10px;
 }
 
+.card-modal-delete-button {
+  color: #f23737;
+}
+
 .card-modal-update-button:hover {
   color: #fff;
   border: none;
-  background-color: #37f285;
 }
 
 .card-modal-delete-button:hover {
