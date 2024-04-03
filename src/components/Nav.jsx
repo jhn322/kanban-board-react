@@ -55,7 +55,7 @@ const Nav = () => {
               <MdClose
                 style={{
                   fontSize: "32px",
-                  color: "url(#gradient)",
+                  color: "#000000",
                 }}
               />
             ) : (

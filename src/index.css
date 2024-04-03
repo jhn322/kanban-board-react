@@ -439,6 +439,15 @@ li:hover {
     display: none;
   }
 
+  /* Fix for insible nav li in mobile */
+  .gradient,
+  li:hover {
+    background: none;
+    background-clip: text;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+  }
+
   .nav-container {
     margin-top: 0.5rem;
     margin-bottom: -2.2rem;
@@ -484,6 +493,7 @@ li:hover {
     font-weight: 700;
     padding: 2px 8px;
     margin: 0 -6.5px;
+    color: #000000;
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
