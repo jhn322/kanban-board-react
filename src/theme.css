@@ -1,4 +1,4 @@
-/* Toggle button */
+/* Toggle theme button */
 .toggle-theme {
   position: absolute;
   top: 19px;
@@ -14,6 +14,7 @@
   background-color: rgba(169, 15, 252, 0.3);
 }
 
+.card.theme,
 .card-modal-content.theme,
 .card-task-title.theme,
 .card-task-text.theme,
@@ -37,7 +38,8 @@
   border: none;
 }
 
-/* Modals inputs */
+/* Card date & modals inputs */
+.card-modal-date.theme,
 .add-task-title.theme::placeholder,
 .add-task-text.theme::placeholder {
   color: rgb(216, 144, 255);

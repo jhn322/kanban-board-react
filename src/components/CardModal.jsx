@@ -8,37 +8,45 @@ const CardModal = ({
   onUpdate,
   onDelete,
 }) => {
-  const [title, setTitle] = useState(cardInfo.title);
-  const [text, setText] = useState(cardInfo.text);
+  const [title, setTitle] = useState(cardInfo.title); // State for managing card title
+  const [text, setText] = useState(cardInfo.text); // State for managing card text
 
+  // Function to handle title change
   const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+    setTitle(event.target.value); // Update title state with new value
   };
 
+  // Function to handle text change
   const handleTextChange = (event) => {
-    setText(event.target.value);
+    setText(event.target.value); // Update text state with new value
   };
 
+  // Function to handle key down event
   const handleKeyDown = (event) => {
+    // If Enter key is pressed
     if (event.key === "Enter") {
-      handleUpdate();
+      handleUpdate(); // Call handleUpdate function
     }
   };
 
+  // Function to handle card update
   const handleUpdate = () => {
-    onUpdate(title, text);
-    onClose();
+    onUpdate(title, text); // Call onUpdate function with updated title and text
+    onClose(); // Close the modal
   };
 
+  // Function to handle card deletion
   const handleDelete = () => {
-    onDelete(cardInfo.id);
+    onDelete(cardInfo.id); // Call onDelete function with card ID
     onClose();
   };
 
   return (
     <div className="card-modal">
+      {" "}
+      {/* Container for card modal */}
       <div
-        className={`card-modal-content ${theme === "alternate" ? "theme" : ""}`}
+        className={`card-modal-content ${theme === "alternate" ? "theme" : ""}`} // Dynamically set class based on theme
       >
         <div
           className={`card-modal-title ${theme === "alternate" ? "theme" : ""}`}
@@ -56,9 +64,9 @@ const CardModal = ({
               }`}
               type="text"
               id="title"
-              value={title}
+              value={title} // Current value of title
               onChange={handleTitleChange}
-              onKeyDown={handleKeyDown}
+              onKeyDown={handleKeyDown} // Handle key down event
               placeholder="Edit title"
             />
             <textarea
@@ -66,14 +74,16 @@ const CardModal = ({
                 theme === "alternate" ? "theme" : ""
               }`}
               id="text"
-              value={text}
-              onChange={handleTextChange}
+              value={text} // Current value of text
+              onChange={handleTextChange} // Handle text change
               onKeyDown={handleKeyDown}
-              placeholder="Edit text"
+              placeholder="Edit text" // Placeholder for text input
             ></textarea>
           </div>
         </div>
         <div className="card-modal-buttons">
+          {" "}
+          {/* Button section of modal */}
           <button
             className={`card-modal-update-button ${
               theme === "alternate" ? "theme" : ""
@@ -86,13 +96,19 @@ const CardModal = ({
             className={`card-modal-delete-button ${
               theme === "alternate" ? "theme" : ""
             }`}
-            onClick={handleDelete}
+            onClick={handleDelete} // Handle delete button click
           >
             Delete
           </button>
         </div>
         <div className="card-modal-info">
-          <p className="card-modal-date">Created on: {creationDate}</p>
+          <p
+            className={`card-modal-date ${
+              theme === "alternate" ? "theme" : ""
+            }`}
+          >
+            Created on: {creationDate} {/* Display creation date */}
+          </p>
         </div>
       </div>
     </div>
