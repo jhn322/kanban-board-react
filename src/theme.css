@@ -14,6 +14,12 @@
   background-color: rgba(169, 15, 252, 0.3);
 }
 
+/* Highlight the column the card is dragged over */
+.column.hover-over.theme {
+  background-color: rgba(74, 205, 165, 0.3);
+  border: 2px dashed #999;
+}
+
 .card.theme,
 .card-modal-content.theme,
 .card-task-title.theme,
