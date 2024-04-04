@@ -22,7 +22,6 @@ a {
 }
 
 /* Primary background styles */
-.nav-links,
 .column,
 .add-modal-content,
 .column-title > h2,
@@ -94,7 +93,7 @@ li:hover {
   padding: 0 2rem;
 }
 
-/* Padding nav links */
+/* Flex for nav links container */
 .nav-links {
   display: flex;
   justify-content: center;
@@ -116,8 +115,13 @@ li:hover {
   text-align: center;
 }
 
+/* Styling for individual nav link(s) */
 .nav-link {
   margin: 0 2rem;
+  padding: 0 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
 }
 
 /* Center all items in app */

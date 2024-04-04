@@ -10,6 +10,7 @@
 }
 
 /* --------Alternate theme-------- */
+.nav-link.theme,
 .column.theme {
   background-color: rgba(169, 15, 252, 0.3);
 }
