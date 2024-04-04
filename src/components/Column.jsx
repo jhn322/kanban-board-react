@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 // Icons
 import { BsPlusSquareFill } from "react-icons/bs"; // Importing plus square icon
 // Components
@@ -71,7 +72,15 @@ const Column = ({
       }}
     >
       <div className="column-title">
-        <h2>{title}</h2>
+        <h2>
+          {/* Use NavLink for navigation between columns */}
+          <NavLink
+            to={`/${title.toLowerCase().replace(" ", "")}`}
+            activeClassName="active" // Add a class when the link is active
+          >
+            {title}
+          </NavLink>
+        </h2>
       </div>
       <div className="card-list">
         {" "}

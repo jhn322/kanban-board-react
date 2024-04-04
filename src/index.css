@@ -71,6 +71,7 @@ a {
 
 /* -----------------Navbar----------------- */
 /* Gradient for nav links */
+.column-title h2 a:hover,
 li:hover {
   background: linear-gradient(to right, #783db2, #f2379a, #fd8173);
   background-clip: text;
