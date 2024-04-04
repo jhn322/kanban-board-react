@@ -52,7 +52,7 @@ const Nav = () => {
               border: "none",
               cursor: "pointer",
               padding: 0,
-              display: "block", // Block display
+              display: "block",
               position: "absolute", // Absolute positioning
               top: "7px",
               left: "5px",
@@ -77,9 +77,8 @@ const Nav = () => {
           </button>
         )}
         <div className={`nav-links ${isMenuOpen ? "show" : ""}`}>
-          {" "}
-          {/* Navigation links with router */}
           <ul>
+            {/* Render Home link for all viewports */}
             <li>
               <NavLink
                 to="/"
@@ -88,30 +87,41 @@ const Nav = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/todo"
-                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
-              >
-                To Do
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/doing"
-                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
-              >
-                Doing
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/done"
-                className={`nav-link ${theme === "alternate" ? "theme" : ""}`}
-              >
-                Done
-              </NavLink>
-            </li>
+            {/* Render other links for mobile only */}
+            {showBurgerMenu && (
+              <>
+                <li>
+                  <NavLink
+                    to="/todo"
+                    className={`nav-link ${
+                      theme === "alternate" ? "theme" : ""
+                    }`}
+                  >
+                    To Do
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/doing"
+                    className={`nav-link ${
+                      theme === "alternate" ? "theme" : ""
+                    }`}
+                  >
+                    Doing
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/done"
+                    className={`nav-link ${
+                      theme === "alternate" ? "theme" : ""
+                    }`}
+                  >
+                    Done
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
