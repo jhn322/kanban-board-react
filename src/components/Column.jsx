@@ -17,11 +17,13 @@ const Column = ({
   onCardClick,
   onDragStart,
   onDragEnter,
+  onDragLeave, // Added onDragLeave event handler
   onDragOver,
   onDrop,
 }) => {
   const [isHovered, setIsHovered] = useState(false); // State for mouse hover state
   const [isClicked, setIsClicked] = useState(false); // State for click state
+  const [isDragOver, setIsDragOver] = useState(false); // State for whether a card is dragged over
 
   // Function to handle card deletion
   const handleDeleteCard = (id, index) => {
@@ -45,11 +47,28 @@ const Column = ({
     setTimeout(() => setIsClicked(false), 300); // Reset isClicked state after a delay
   };
 
+  // Function to handle drop event
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragOver(false); // Reset state to indicate that card is not being dragged over
+    onDrop(e, title); // Call onDrop event handler from props
+  };
+
   return (
     <div
-      className={`column ${className}`} // CSS class for column with additional class
+      className={`column ${className} ${isDragOver ? "hover-over" : ""}`} // CSS class for column with additional class and hover-over class if a card is being dragged over
       onDragOver={(event) => onDragOver(event)} // Handle drag over event
-      onDrop={(e) => onDrop(e, title)} // Handle drop event
+      onDrop={handleDrop} // Handle drop event
+      onDragEnter={() => {
+        // Set isDragOver state to true when a card is dragged over
+        setIsDragOver(true);
+        onDragEnter(); // Call onDragEnter event handler from props
+      }}
+      onDragLeave={() => {
+        // Set isDragOver state to false when a card leaves dragging over
+        setIsDragOver(false);
+        onDragLeave(); // Call onDragLeave event handler from props
+      }}
     >
       <div className="column-title">
         <h2>{title}</h2>
@@ -62,7 +81,6 @@ const Column = ({
             key={`${card.id}-${index}`}
             draggable // Make card draggable
             onDragStart={(e) => onDragStart(e, card)}
-            onDragEnter={(e) => onDragEnter(e, title)}
             onClick={() =>
               onCardClick(card.id, card.title, card.text, card.creationDate)
             }

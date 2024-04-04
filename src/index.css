@@ -141,6 +141,12 @@ li:hover {
   scrollbar-width: none;
 }
 
+/* Highlight the column the card is dragged over */
+.column.hover-over {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 2px dashed #999;
+}
+
 /* -----------------Cards----------------- */
 /* Hides ugly scroll bar for safari/chrome */
 .card-task-text::-webkit-scrollbar,
