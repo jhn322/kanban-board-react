@@ -28,8 +28,8 @@ const Board = () => {
   }, [setColumns]); // Dependency array ensures this effect runs only when setColumns function changes
 
   // Function to handle drag start event
-  const handleDragStart = (e, item) => {
-    setDraggedItem(item);
+  const handleDragStart = (e, item, columnTitle) => {
+    setDraggedItem({ ...item, columnTitle }); // Include column title information
   };
 
   // Function to handle drag enter event
@@ -48,7 +48,12 @@ const Board = () => {
     const updatedColumns = columns.map((column) => {
       let updatedCards;
       if (column.title.toLowerCase() === targetColumn.toLowerCase()) {
-        updatedCards = column.cards.concat(draggedItem); // Add dragged item to target column
+        // Check if the dropped item is from the same column
+        if (draggedItem.columnTitle !== targetColumn) {
+          updatedCards = column.cards.concat(draggedItem); // Add dragged item to target column
+        } else {
+          updatedCards = column.cards;
+        }
       } else {
         updatedCards = column.cards.filter(
           (card) => card.id !== draggedItem.id // Remove dragged item from other columns
@@ -166,7 +171,7 @@ const Board = () => {
           onDeleteCard={handleDeleteCard}
           onEditCard={handleEditCard}
           onCardClick={handleCardClick}
-          onDragStart={handleDragStart}
+          onDragStart={(e, item) => handleDragStart(e, item, column.title)} // Pass column title
           onDragEnter={handleDragEnter}
           onDragOver={handleDragOver}
           onDrop={handleDrop}
